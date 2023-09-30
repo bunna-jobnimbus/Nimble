@@ -11,7 +11,7 @@ export function generateStruct() {
 	let generateButton = document.createElement('button');
 	generateButton.textContent = 'Generate Struct';
 	generateButton.className = 'nimble-button margin-left';
-	recordClick(generateButton, 'generateStruct', () => {
+	recordClick(generateButton, 'swagger.generateStruct', () => {
 		if (!table) return;
 		copyToClipboard(generateButton, _getStruct(table));
 	});

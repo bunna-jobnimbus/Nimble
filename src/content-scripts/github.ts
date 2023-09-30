@@ -29,7 +29,7 @@ function alwaysIgnoreWhitespace() {
 	let filesChangedLink: Optional<HTMLAnchorElement> = getUnmodifiedElement('.tabnav-tab[href$="files"]');
 	if (!filesChangedLink) return;
 	filesChangedLink.href += '?w=1';
-	recordClick(filesChangedLink, 'alwaysIgnoreWhitespace');
+	recordClick(filesChangedLink, 'github.alwaysIgnoreWhitespace');
 }
 
 function visitJiraLink() {
@@ -39,7 +39,7 @@ function visitJiraLink() {
 		/(JN-\d+)/,
 		'<a target="_blank" href="https://jobnimbus.atlassian.net/browse/$1">$1</a>'
 	);
-	recordClick(pullRequestTitle.querySelector('a'), 'visitJiraLink');
+	recordClick(pullRequestTitle.querySelector('a'), 'github.visitJiraLink');
 }
 
 function categorizeComment() {
@@ -66,7 +66,7 @@ function _createCategoryButton(icon: string, value: string, textarea: HTMLTextAr
 	button.className = 'Button conventional-comment';
 	button.innerHTML = icon;
 	button.title = value;
-	recordClick(button, 'categorizeComment', (event) => {
+	recordClick(button, 'github.categorizeComment', (event) => {
 		event.preventDefault(); // prevent form submission
 		textarea.focus();
 		textarea.value = `**${icon} ${value}:** `;

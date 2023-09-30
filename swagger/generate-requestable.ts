@@ -10,7 +10,7 @@ export function generateRequestable() {
 	let generateButton = document.createElement('button');
 	generateButton.textContent = 'Generate Requestable';
 	generateButton.className = 'nimble-button btn margin-left';
-	recordClick(generateButton, 'generateRequestable', () => {
+	recordClick(generateButton, 'swagger.generateRequestable', () => {
 		if (!operationBlock) return;
 		copyToClipboard(generateButton, _getRequestable(operationBlock));
 	});

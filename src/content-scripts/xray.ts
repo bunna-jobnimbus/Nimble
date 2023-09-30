@@ -14,7 +14,7 @@ function generateXcodeTests() {
 	let generateButton = document.createElement('button');
 	generateButton.className = 'nimble-button';
 	generateButton.textContent = 'Generate Xcode Tests';
-	recordClick(generateButton, 'generateXcodeTests', () => {
+	recordClick(generateButton, 'xray.generateXcodeTests', () => {
 		const jnid = window.name.match(/JN-\d+/)?.[0];
 		if (!jnid) return;
 		let rows = [...document.querySelectorAll<HTMLElement>('.step-fields')];

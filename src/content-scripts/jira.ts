@@ -100,7 +100,7 @@ function _createTemplateButton(label: string, template: string) {
 	let button = document.createElement('button');
 	button.textContent = label;
 	button.className = `nimble-button`;
-	recordClick(button, 'insertDescriptionTemplate', () => {
+	recordClick(button, 'jira.insertDescriptionTemplate', () => {
 		let textarea = document.querySelector<HTMLTextAreaElement>('#description-container #ak-editor-textarea');
 		if (!textarea) return;
 		textarea.innerHTML = template;
@@ -120,7 +120,7 @@ function copyJnid() {
 	let copyButton = document.createElement('button');
 	copyButton.className = 'nimble-button margin-left';
 	copyButton.textContent = 'Copy JN-ID';
-	recordClick(copyButton, 'copyJnid', () => {
+	recordClick(copyButton, 'jira.copyJnid', () => {
 		if (!jiraLink?.innerText) return;
 		copyToClipboard(copyButton, jiraLink.innerText);
 	});

@@ -4,6 +4,7 @@ import { Optional } from '@shared/optional';
 import { recordClick } from '@shared/record-click';
 import { highlightMyPullRequests } from './highlight-my-pull-requests';
 import { alwaysIgnoreWhitespace } from './always-ignore-whitespace';
+import { visitJiraLink } from './visit-jira-link';
 
 onDocumentChange(() => {
 	alwaysIgnoreWhitespace();
@@ -11,16 +12,6 @@ onDocumentChange(() => {
 	visitJiraLink();
 	categorizeComment();
 });
-
-function visitJiraLink() {
-	let pullRequestTitle = getUnmodifiedElement('.js-issue-title');
-	if (!pullRequestTitle) return;
-	pullRequestTitle.innerHTML = pullRequestTitle.innerHTML.replace(
-		/(JN-\d+)/,
-		'<a target="_blank" href="https://jobnimbus.atlassian.net/browse/$1">$1</a>'
-	);
-	recordClick(pullRequestTitle.querySelector('a'), 'github.visitJiraLink');
-}
 
 function categorizeComment() {
 	let commentForm = getUnmodifiedElement('.js-inline-comment-form');

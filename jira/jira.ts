@@ -16,12 +16,10 @@ function highlightMyTickets() {
 	if (!userTag) return;
 
 	let userName = userTag.getAttribute('content');
-	injectStyle(`
-		[data-test-id='platform-card.ui.card.focus-container']:has([alt='${userName}']) {
-			outline: 4px solid var(--nimble-blue);
-			outline-offset: -4px;
-		}
-	`);
+	injectStyle(`[data-test-id='platform-card.ui.card.focus-container']:has([alt='${userName}'])`, {
+		outline: '4px solid var(--nimble-blue)',
+		outlineOffset: '-4px',
+	});
 }
 
 function insertDescriptionTemplate() {

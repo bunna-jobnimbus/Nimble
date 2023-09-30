@@ -1,8 +1,8 @@
 import { getUnmodifiedElement } from '@shared/get-unmodified-content';
-import { injectStyle } from '@shared/inject-style';
 import { onDocumentChange } from '@shared/on-document-change';
 import { Optional } from '@shared/optional';
 import { recordClick } from '@shared/record-click';
+import { highlightMyPullRequests } from './highlight-my-pull-requests';
 
 onDocumentChange(() => {
 	alwaysIgnoreWhitespace();
@@ -10,20 +10,6 @@ onDocumentChange(() => {
 	visitJiraLink();
 	categorizeComment();
 });
-
-function highlightMyPullRequests() {
-	let userTag = getUnmodifiedElement('meta[name="user-login"]');
-	if (!userTag) return;
-
-	let userName = userTag.getAttribute('content');
-	injectStyle(`
-		.opened-by a[title$='${userName}'] {
-			border-radius: 2px;
-			padding: 0 2px;
-			outline: 2px solid var(--nimble-blue);
-		}
-	`);
-}
 
 function alwaysIgnoreWhitespace() {
 	let filesChangedLink: Optional<HTMLAnchorElement> = getUnmodifiedElement('.tabnav-tab[href$="files"]');

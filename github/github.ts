@@ -3,6 +3,7 @@ import { onDocumentChange } from '@shared/on-document-change';
 import { Optional } from '@shared/optional';
 import { recordClick } from '@shared/record-click';
 import { highlightMyPullRequests } from './highlight-my-pull-requests';
+import { alwaysIgnoreWhitespace } from './always-ignore-whitespace';
 
 onDocumentChange(() => {
 	alwaysIgnoreWhitespace();
@@ -10,13 +11,6 @@ onDocumentChange(() => {
 	visitJiraLink();
 	categorizeComment();
 });
-
-function alwaysIgnoreWhitespace() {
-	let filesChangedLink: Optional<HTMLAnchorElement> = getUnmodifiedElement('.tabnav-tab[href$="files"]');
-	if (!filesChangedLink) return;
-	filesChangedLink.href += '?w=1';
-	recordClick(filesChangedLink, 'github.alwaysIgnoreWhitespace');
-}
 
 function visitJiraLink() {
 	let pullRequestTitle = getUnmodifiedElement('.js-issue-title');

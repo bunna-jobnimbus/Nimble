@@ -4,8 +4,8 @@ export type EventKey =
 	| 'github.visitJiraLink'
 	| 'jenkins.autoSelectMainBranch'
 	| 'jenkins.requireJiraTicket'
+	| 'jira.copyDescriptionTemplate'
 	| 'jira.copyJnid'
-	| 'jira.insertDescriptionTemplate'
 	| 'swagger.generateRequestable'
 	| 'swagger.generateStruct'
 	| 'xray.generateXcodeTests';

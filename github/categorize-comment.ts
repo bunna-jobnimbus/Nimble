@@ -24,8 +24,7 @@ export function categorizeComment() {
 }
 
 function makeCategoryButton(icon: string, value: string, textarea: HTMLTextAreaElement) {
-	return makeButton({
-		label: icon,
+	return makeButton(icon, {
 		className: 'Button conventional-comment',
 		title: value,
 		action: (event) => {

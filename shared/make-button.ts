@@ -1,19 +1,24 @@
-export function makeButton(config: {
-	className: string;
-	label: string;
-	title?: string;
-	action?: (event: MouseEvent) => void;
-}) {
+export function makeButton(
+	label: string,
+	config: {
+		className?: string;
+		title?: string;
+		action?: (event: MouseEvent, button: HTMLButtonElement) => void;
+	} = {}
+) {
 	const button = document.createElement('button');
-	button.className = config.className;
-	button.innerText = config.label;
+	button.innerText = label;
+
+	if (config.className) {
+		button.className = config.className;
+	}
 
 	if (config.title) {
 		button.title = config.title;
 	}
 
 	if (config.action) {
-		button.addEventListener('click', config.action);
+		button.addEventListener('click', (event) => config.action?.(event, button));
 	}
 
 	return button;

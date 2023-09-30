@@ -7,14 +7,13 @@ export function copyJnid() {
 	const jiraLink = getUnmodifiedElement('a[data-testid*="current-issue"]');
 	if (!jiraLink) return;
 
-	const copyButton = makeButton({
-		className: 'nimble-button margin-left',
-		label: 'Copy JN-ID',
-		action: () => {
-			copyToClipboard(copyButton, jiraLink.innerText);
-			recordEvent('jira.copyJnid');
-		},
-	});
-
-	jiraLink.after(copyButton);
+	jiraLink.after(
+		makeButton('Copy JN-ID', {
+			className: 'nimble-button margin-left',
+			action: (_, button) => {
+				copyToClipboard(button, jiraLink.innerText);
+				recordEvent('jira.copyJnid');
+			},
+		})
+	);
 }

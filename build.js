@@ -10,7 +10,7 @@ await Bun.build({
 		'./src/content-scripts/github.ts',
 		'./src/content-scripts/jenkins.ts',
 		'./src/content-scripts/jira.ts',
-		'./src/swagger/swagger.ts',
+		'./swagger/swagger.ts',
 		'./src/content-scripts/xray.ts',
 	],
 	naming: '[name].[ext]',

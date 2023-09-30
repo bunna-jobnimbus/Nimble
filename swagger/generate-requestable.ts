@@ -4,10 +4,10 @@ import { Optional } from '@shared/optional';
 import { recordClick } from '@shared/record-click';
 
 export function generateRequestable() {
-	let operationBlock = getUnmodifiedElement('.opblock:has(.try-out__btn)');
+	const operationBlock = getUnmodifiedElement('.opblock:has(.try-out__btn)');
 	if (!operationBlock) return;
 
-	let generateButton = document.createElement('button');
+	const generateButton = document.createElement('button');
 	generateButton.textContent = 'Generate Requestable';
 	generateButton.className = 'nimble-button btn margin-left';
 	recordClick(generateButton, 'swagger.generateRequestable', () => {
@@ -33,7 +33,7 @@ function _getRequestable(operationBlock: HTMLElement) {
 		?.replaceAll('{', '\\(')
 		.replaceAll('}', ')');
 
-	let properties: RequestableProperty[] = [];
+	const properties: RequestableProperty[] = [];
 	[...operationBlock.querySelectorAll<HTMLElement>('td.parameters-col_name')].forEach((param) => {
 		properties.push(
 			new RequestableProperty(
@@ -44,7 +44,9 @@ function _getRequestable(operationBlock: HTMLElement) {
 		);
 	});
 
-	let isArray = operationBlock.querySelector<HTMLElement>('.responses-wrapper .model-box')?.innerText.startsWith('[');
+	const isArray = operationBlock
+		.querySelector<HTMLElement>('.responses-wrapper .model-box')
+		?.innerText.startsWith('[');
 	let responseType = operationBlock.querySelector<HTMLElement>('.responses-wrapper .model-title')?.innerText;
 	if (isArray && responseType) {
 		responseType = `[${responseType}]`;
@@ -80,7 +82,7 @@ function _getRequestable(operationBlock: HTMLElement) {
 }
 
 function _getSwiftType(param: HTMLElement) {
-	let optionality = param.querySelector('.required') ? '' : '?';
+	const optionality = param.querySelector('.required') ? '' : '?';
 	switch (param.querySelector<HTMLElement>('.parameter__type')?.innerText) {
 		case 'string':
 			return 'String' + optionality;

@@ -11,14 +11,14 @@ function generateXcodeTests() {
 	const exportButton = getUnmodifiedElement('div:has(> #export-button-toolbar)');
 	if (!exportButton) return;
 
-	let generateButton = document.createElement('button');
+	const generateButton = document.createElement('button');
 	generateButton.className = 'nimble-button';
 	generateButton.textContent = 'Generate Xcode Tests';
 	recordClick(generateButton, 'xray.generateXcodeTests', () => {
 		const jnid = window.name.match(/JN-\d+/)?.[0];
 		if (!jnid) return;
-		let rows = [...document.querySelectorAll<HTMLElement>('.step-fields')];
-		let tests = rows.map((row, index) => _getTestFunction(row, index, jnid)).join('\n\n');
+		const rows = [...document.querySelectorAll<HTMLElement>('.step-fields')];
+		const tests = rows.map((row, index) => _getTestFunction(row, index, jnid)).join('\n\n');
 		copyToClipboard(generateButton, tests);
 	});
 
@@ -26,7 +26,7 @@ function generateXcodeTests() {
 }
 
 function _getTestFunction(row: HTMLElement, index: number, jnid: string) {
-	let summary = [...row.querySelectorAll<HTMLElement>('.ak-renderer-document')]
+	const summary = [...row.querySelectorAll<HTMLElement>('.ak-renderer-document')]
 		.flatMap((cell) => cell.innerText.replaceAll('\n\n', '\n').split('\n'))
 		.map((text) => `\t/// ${text}`)
 		.join(`\n`);

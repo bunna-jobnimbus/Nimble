@@ -1,4 +1,3 @@
-import { codeBlock } from '@shared/code-block';
 import { copyToClipboard } from '@shared/copy-to-clipboard';
 import { getUnmodifiedElement } from '@shared/get-unmodified-content';
 import { makeButton } from '@shared/make-button';

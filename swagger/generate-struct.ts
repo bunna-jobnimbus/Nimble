@@ -4,11 +4,11 @@ import { Optional } from '@shared/optional';
 import { recordClick } from '@shared/record-click';
 
 export function generateStruct() {
-	let table = getUnmodifiedElement<HTMLTableElement>('table.model');
+	const table = getUnmodifiedElement<HTMLTableElement>('table.model');
 	if (!table) return;
 
 	// todo: create button helper
-	let generateButton = document.createElement('button');
+	const generateButton = document.createElement('button');
 	generateButton.textContent = 'Generate Struct';
 	generateButton.className = 'nimble-button margin-left';
 	recordClick(generateButton, 'swagger.generateStruct', () => {
@@ -20,19 +20,19 @@ export function generateStruct() {
 }
 
 function _getStruct(table: HTMLTableElement) {
-	let name = table.closest('span.model')?.querySelector('button')?.innerText;
-	let rows = [...table.querySelectorAll<HTMLElement>('tr.property-row')].map(_getStructProperty).join('\n');
+	const name = table.closest('span.model')?.querySelector('button')?.innerText;
+	const rows = [...table.querySelectorAll<HTMLElement>('tr.property-row')].map(_getStructProperty).join('\n');
 	// todo: line printer
 	return [`public struct ${name ?? '<#StructName#>'}: Codable {`, rows, `}`].join('\n');
 }
 
 function _getStructProperty(row: HTMLElement) {
-	let cells = row.innerText.split('\t'); // 'id\tstring\nnullable: true'
+	const cells = row.innerText.split('\t'); // 'id\tstring\nnullable: true'
 
-	let name = cells[0];
-	let swaggerType = cells[1].split('\n')?.[0] ?? 'UnknownType';
-	let optional = cells[1]?.includes('nullable: true');
-	let type = swaggerToSwiftType[swaggerType] ?? `<#${swaggerType}#>`;
+	const name = cells[0];
+	const swaggerType = cells[1].split('\n')?.[0] ?? 'UnknownType';
+	const optional = cells[1]?.includes('nullable: true');
+	const type = swaggerToSwiftType[swaggerType] ?? `<#${swaggerType}#>`;
 
 	return `\tpublic let ${name}: ${type}${optional ? '?' : ''}`;
 }

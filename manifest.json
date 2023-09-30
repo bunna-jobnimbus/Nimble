@@ -6,28 +6,28 @@
 	"content_scripts": [
 		{
 			"matches": ["https://jobnimbus.atlassian.net/jira/*", "https://jobnimbus.atlassian.net/browse/*"],
-			"css": ["styles/shared.css", "styles/jira.css"],
+			"css": ["shared.css", "jira.css"],
 			"js": ["jira.js"]
 		},
 		{
 			"matches": ["https://github.com/*"],
-			"css": ["styles/shared.css", "styles/github.css"],
+			"css": ["shared.css", "github.css"],
 			"js": ["github.js"]
 		},
 		{
 			"matches": ["https://app.dev.jobnimbus.dev/api*", "https://api.dev.jobnimbus.dev/proposals/swagger/*"],
-			"css": ["styles/shared.css"],
+			"css": ["shared.css"],
 			"js": ["swagger.js"]
 		},
 		{
 			"matches": ["https://jenkins.prod.jobnimbus.com/*", "https://jenkins.dev.jobnimbus.dev/*"],
-			"css": ["styles/shared.css", "styles/jenkins.css"],
+			"css": ["shared.css", "jenkins.css"],
 			"js": ["jenkins.js"]
 		},
 		{
 			"matches": ["https://xray.cloud.getxray.app/*"],
 			"all_frames": true,
-			"css": ["styles/shared.css"],
+			"css": ["shared.css"],
 			"js": ["xray.js"]
 		}
 	],

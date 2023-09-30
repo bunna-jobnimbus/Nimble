@@ -22,7 +22,7 @@ console.log('build: transpiled content scripts');
 execSync('cp ./manifest.json ./dist/manifest.json');
 console.log('build: copied manifest.json');
 
-execSync('cp -R ./styles ./dist/styles');
+execSync('cp ./**/*.css ./dist/');
 console.log('build: copied styles');
 
 console.log('build: finished');

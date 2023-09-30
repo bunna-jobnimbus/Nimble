@@ -8,10 +8,10 @@ console.log('build: removed dist directory');
 await Bun.build({
 	entrypoints: [
 		'./github/github.ts',
-		'./src/content-scripts/jenkins.ts',
-		'./src/content-scripts/jira.ts',
+		'./jenkins/jenkins.ts',
+		'./jira/jira.ts',
 		'./swagger/swagger.ts',
-		'./src/content-scripts/xray.ts',
+		'./xray/xray.ts',
 	],
 	naming: '[name].[ext]',
 	outdir: './dist',

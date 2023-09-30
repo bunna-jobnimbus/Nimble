@@ -7,7 +7,7 @@ console.log('build: removed dist directory');
 
 await Bun.build({
 	entrypoints: [
-		'./src/content-scripts/github.ts',
+		'./github/github.ts',
 		'./src/content-scripts/jenkins.ts',
 		'./src/content-scripts/jira.ts',
 		'./swagger/swagger.ts',

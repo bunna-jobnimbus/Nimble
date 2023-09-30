@@ -1,0 +1,10 @@
+{
+	"name": "nimble",
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {},
+	"devDependencies": {
+		"@types/chrome": "^0.0.246",
+		"bun-types": "^1.0.3"
+	}
+}

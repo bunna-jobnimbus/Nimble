@@ -1,0 +1,42 @@
+:root {
+	--nimble-blue: #3478f6;
+	--nimble-green: #65c466;
+	--nimble-red: #eb4e3d;
+	--nimble-yellow: #f7ce46;
+}
+
+.margin-left {
+	margin-left: 8px !important;
+}
+.margin-top {
+	margin-top: 8px !important;
+}
+
+button.nimble-button {
+	color: var(--nimble-red) !important;
+	border: 2px solid var(--nimble-red) !important;
+	border-radius: 4px;
+	background: none;
+	cursor: pointer;
+	min-height: 1.5rem;
+}
+.nimble-button + .nimble-button {
+	margin-left: 1px;
+}
+
+.outline-blue {
+	outline: 2px solid var(--nimble-blue) !important;
+}
+.outline-green {
+	outline: 2px solid var(--nimble-green) !important;
+}
+.outline-red {
+	outline: 2px solid var(--nimble-red) !important;
+}
+.outline-yellow {
+	outline: 2px solid var(--nimble-yellow) !important;
+}
+
+.position-absolute {
+	position: absolute !important;
+}

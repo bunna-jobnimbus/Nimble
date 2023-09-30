@@ -1,0 +1,35 @@
+{
+	"manifest_version": 3,
+	"name": "Nimble",
+	"description": "A chrome extension containing various improvements for common web developer tools.",
+	"version": "0.1.2",
+	"content_scripts": [
+		{
+			"matches": ["https://jobnimbus.atlassian.net/jira/*", "https://jobnimbus.atlassian.net/browse/*"],
+			"css": ["styles/shared.css", "styles/jira.css"],
+			"js": ["jira.js"]
+		},
+		{
+			"matches": ["https://github.com/*"],
+			"css": ["styles/shared.css", "styles/github.css"],
+			"js": ["github.js"]
+		},
+		{
+			"matches": ["https://app.dev.jobnimbus.dev/api*", "https://api.dev.jobnimbus.dev/proposals/swagger/*"],
+			"css": ["styles/shared.css"],
+			"js": ["swagger.js"]
+		},
+		{
+			"matches": ["https://jenkins.prod.jobnimbus.com/*", "https://jenkins.dev.jobnimbus.dev/*"],
+			"css": ["styles/shared.css", "styles/jenkins.css"],
+			"js": ["jenkins.js"]
+		},
+		{
+			"matches": ["https://xray.cloud.getxray.app/*"],
+			"all_frames": true,
+			"css": ["styles/shared.css"],
+			"js": ["xray.js"]
+		}
+	],
+	"permissions": ["storage"]
+}

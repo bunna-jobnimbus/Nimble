@@ -1,0 +1,16 @@
+/* informational text */
+.jenkins-form-item:has([value='JIRA_TICKETS']) .jenkins-form-label::after {
+	content: '* required or the build will fail during runtime';
+	color: var(--nimble-red);
+}
+
+/* show dashboard first */
+#main-panel:has(.dashboard) {
+	display: grid !important;
+}
+#main-panel h1 {
+	order: -1;
+}
+#main-panel .dashboard {
+	order: -1;
+}

@@ -1,0 +1,66 @@
+/* obvious file dividers */
+.file::after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 3px;
+	background-color: black;
+	border-radius: 3px;
+	margin-top: 7px;
+}
+
+/* color-code review status (list) */
+a[aria-label='Review required before merging'] {
+	border-radius: 2px;
+	padding: 0 2px;
+	outline: 2px solid var(--nimble-yellow);
+}
+a[aria-label*='requesting changes'] {
+	border-radius: 2px;
+	padding: 0 2px;
+	outline: 2px solid var(--nimble-red);
+}
+a[aria-label*='review approval'] {
+	border-radius: 2px;
+	padding: 0 2px;
+	outline: 2px solid var(--nimble-green);
+}
+
+/* color-code review status (sidebar) */
+.discussion-sidebar-item:has([aria-label='Select reviewers']) {
+	padding-top: 0;
+}
+[aria-label='Select reviewers'] {
+	padding: 8px 8px 0;
+	border: 2px solid var(--nimble-yellow);
+	border-radius: 6px;
+}
+[aria-label='Select reviewers']:has(.octicon-check) {
+	border-color: var(--nimble-green);
+}
+[aria-label='Select reviewers']:has(.octicon-file-diff) {
+	border-color: var(--nimble-red);
+}
+
+/* highlight my comments */
+.current-user {
+	outline: 2px solid var(--nimble-blue) !important;
+	outline-offset: -2px !important;
+}
+
+/* highlight unread comments */
+.timeline-comment:has(reactions-menu):not(:has(.user-has-reacted)),
+.review-comment:has(reactions-menu):not(:has(.user-has-reacted)) {
+	outline: 2px solid var(--nimble-yellow);
+	outline-offset: -2px;
+}
+
+/* conventional comments */
+tab-container.preview-selected .conventional-comments {
+	display: none;
+}
+.conventional-comment {
+	font-size: 1.1rem !important;
+	padding-left: 5px !important;
+	padding-right: 5px !important;
+}

@@ -25,7 +25,7 @@
 		"forceConsistentCasingInFileNames": true,
 		"skipLibCheck": true,
 		"paths": {
-			"@shared/*": ["./src/shared/*"]
+			"@shared/*": ["./shared/*"]
 		}
 	}
 }

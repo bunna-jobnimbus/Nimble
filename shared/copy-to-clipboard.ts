@@ -1,5 +1,8 @@
-export function copyToClipboard(element: HTMLElement, text: string) {
-	const originalButtonText = element.innerHTML;
+const LABEL_ATTRIBUTE = 'data-original-label';
+
+export function copyToClipboard(element: HTMLButtonElement, text: string) {
+	const originalLabel = element.getAttribute(LABEL_ATTRIBUTE) ?? element.innerText;
+	element.setAttribute(LABEL_ATTRIBUTE, originalLabel);
 
 	// todo: this is only needed because of the xray iframe (replace with navigator.clipboard.writeText)
 	const textarea = document.createElement('textarea');
@@ -9,8 +12,6 @@ export function copyToClipboard(element: HTMLElement, text: string) {
 	document.execCommand('copy');
 	textarea.remove();
 
-	element.innerHTML = 'Copied!';
-	window.setTimeout(() => {
-		element.innerHTML = originalButtonText;
-	}, 500);
+	element.innerText = 'Copied!';
+	window.setTimeout(() => (element.innerText = originalLabel), 500);
 }

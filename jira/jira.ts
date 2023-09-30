@@ -1,26 +1,14 @@
-import { copyToClipboard } from '@shared/copy-to-clipboard';
 import { getUnmodifiedElement } from '@shared/get-unmodified-content';
-import { injectStyle } from '@shared/inject-style';
 import { onDocumentChange } from '@shared/on-document-change';
-import { Optional } from '@shared/optional';
 import { recordClick } from '@shared/record-click';
+import { highlightMyTickets } from './highlight-my-tickets';
+import { copyJnid } from './copy-jnid';
 
 onDocumentChange(() => {
 	highlightMyTickets();
 	insertDescriptionTemplate();
 	copyJnid();
 });
-
-function highlightMyTickets() {
-	let userTag = getUnmodifiedElement('meta[name="ajs-remote-user-fullname"]');
-	if (!userTag) return;
-
-	let userName = userTag.getAttribute('content');
-	injectStyle(`[data-test-id='platform-card.ui.card.focus-container']:has([alt='${userName}'])`, {
-		outline: '4px solid var(--nimble-blue)',
-		outlineOffset: '-4px',
-	});
-}
 
 function insertDescriptionTemplate() {
 	let descriptionContainer = getUnmodifiedElement('#description-field-label');
@@ -107,21 +95,4 @@ function _createTemplateButton(label: string, template: string) {
 		}, 200);
 	});
 	return button;
-}
-
-function copyJnid() {
-	let jiraLink = getUnmodifiedElement(
-		'[data-testid="issue.views.issue-base.foundation.breadcrumbs.current-issue.item"]'
-	);
-	if (!jiraLink) return;
-
-	let copyButton = document.createElement('button');
-	copyButton.className = 'nimble-button margin-left';
-	copyButton.textContent = 'Copy JN-ID';
-	recordClick(copyButton, 'jira.copyJnid', () => {
-		if (!jiraLink?.innerText) return;
-		copyToClipboard(copyButton, jiraLink.innerText);
-	});
-
-	jiraLink.after(copyButton);
 }

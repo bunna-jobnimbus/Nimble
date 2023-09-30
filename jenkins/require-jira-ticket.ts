@@ -7,7 +7,8 @@ export function requireJiraTicket() {
 
 	buildButton.disabled = true;
 	const jiraTicketInput = document.querySelector<HTMLInputElement>('input[value="JIRA_TICKETS"] + input');
-	jiraTicketInput?.addEventListener('input', () => {
+	if (!jiraTicketInput) return;
+	jiraTicketInput.addEventListener('input', () => {
 		buildButton.disabled = !/JN-\d{5}/.test(jiraTicketInput.value);
 	});
 	recordEvent('jenkins.requireJiraTicket');

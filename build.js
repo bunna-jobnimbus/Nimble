@@ -19,10 +19,10 @@ await Bun.build({
 });
 console.log('build: transpiled content scripts');
 
-execSync('cp ./src/manifest.json ./dist/manifest.json');
+execSync('cp ./manifest.json ./dist/manifest.json');
 console.log('build: copied manifest.json');
 
-execSync('cp -R ./src/styles ./dist/styles');
+execSync('cp -R ./styles ./dist/styles');
 console.log('build: copied styles');
 
 console.log('build: finished');

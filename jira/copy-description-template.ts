@@ -13,12 +13,9 @@ export function copyDescriptionTemplate() {
 }
 
 function makeTemplateButton(label: string, ...lines: string[]) {
-	return makeButton(label, {
-		className: 'nimble-button',
-		action: (_, button) => {
-			copyToClipboard(button, lines.join('\n\n'));
-			recordEvent('jira.copyDescriptionTemplate');
-		},
+	return makeButton(label, 'nimble-button', (_, button) => {
+		copyToClipboard(button, lines.join('\n\n'));
+		recordEvent('jira.copyDescriptionTemplate');
 	});
 }
 

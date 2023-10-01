@@ -10,12 +10,9 @@ export function generateStruct() {
 	const table = getUnmodifiedElement<HTMLTableElement>('table.model');
 	if (!table) return;
 
-	const button = makeButton('Generate Struct', {
-		className: 'nimble-button margin-left',
-		action: (_, button) => {
-			copyToClipboard(button, getStruct(table).toString());
-			recordEvent('swagger.generateStruct');
-		},
+	const button = makeButton('Generate Struct', 'nimble-button margin-left', (_, button) => {
+		copyToClipboard(button, getStruct(table).toString());
+		recordEvent('swagger.generateStruct');
 	});
 
 	table.before(button);
@@ -37,8 +34,10 @@ function getStruct(table: HTMLTableElement) {
 }
 
 class SwiftStruct {
-	constructor(public name: Optional<string>, public properties: SwiftProperty[]) {
-		this.name = name || '<#StuctName#>';
+	name: string;
+
+	constructor(name: Optional<string>, public properties: SwiftProperty[]) {
+		this.name = name || '<#StructName#>';
 	}
 
 	toString() {

@@ -24,15 +24,16 @@ export function categorizeComment() {
 }
 
 function makeCategoryButton(icon: string, value: string, textarea: HTMLTextAreaElement) {
-	return makeButton(icon, {
-		className: 'Button conventional-comment',
-		title: value,
-		action: (event) => {
+	return makeButton(
+		icon,
+		'Button conventional-comment',
+		(event) => {
 			event.preventDefault(); // prevent form submission
 			textarea.focus();
 			textarea.value = `**${icon} ${value}:** `;
 			textarea.dispatchEvent(new InputEvent('input'));
 			recordEvent('github.categorizeComment');
 		},
-	});
+		value
+	);
 }

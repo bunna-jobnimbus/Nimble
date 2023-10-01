@@ -8,12 +8,9 @@ export function copyJnid() {
 	if (!jiraLink) return;
 
 	jiraLink.after(
-		makeButton('Copy JN-ID', {
-			className: 'nimble-button margin-left',
-			action: (_, button) => {
-				copyToClipboard(button, jiraLink.innerText);
-				recordEvent('jira.copyJnid');
-			},
+		makeButton('Copy JN-ID', 'nimble-button margin-left', (_, button) => {
+			copyToClipboard(button, jiraLink.innerText);
+			recordEvent('jira.copyJnid');
 		})
 	);
 }

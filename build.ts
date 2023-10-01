@@ -1,10 +1,11 @@
 import { execSync } from 'child_process';
 
-console.log('build: started');
+print('started');
 
+print('removing dist directory');
 execSync('rm -rf dist');
-console.log('build: removed dist directory');
 
+print('transpiling content scripts');
 await Bun.build({
 	entrypoints: [
 		'./github/github.ts',
@@ -17,12 +18,15 @@ await Bun.build({
 	outdir: './dist',
 	minify: true,
 });
-console.log('build: transpiled content scripts');
 
+print('copying manifest.json');
 execSync('cp ./manifest.json ./dist/manifest.json');
-console.log('build: copied manifest.json');
 
+print('copying styles');
 execSync('cp ./**/*.css ./dist/');
-console.log('build: copied styles');
 
-console.log('build: finished');
+print('finished');
+
+function print(...messages: any[]) {
+	console.log(new Date(), 'build:', ...messages);
+}

@@ -3,7 +3,8 @@ import { copyToClipboard } from '@shared/copy-to-clipboard';
 import { getUnmodifiedElement } from '@shared/get-unmodified-content';
 import { makeButton } from '@shared/make-button';
 import { recordEvent } from '@shared/record-event';
-import { SwaggerProperty } from './swagger-property';
+import { SwaggerProperty, SwiftProperty } from './swagger-property';
+import { Optional } from '@shared/optional';
 
 export function generateStruct() {
 	const table = getUnmodifiedElement<HTMLTableElement>('table.model');
@@ -12,7 +13,7 @@ export function generateStruct() {
 	const button = makeButton('Generate Struct', {
 		className: 'nimble-button margin-left',
 		action: (_, button) => {
-			copyToClipboard(button, getStruct(table));
+			copyToClipboard(button, getStruct(table).toString());
 			recordEvent('swagger.generateStruct');
 		},
 	});
@@ -23,14 +24,28 @@ export function generateStruct() {
 function getStruct(table: HTMLTableElement) {
 	const name = table.closest('span.model')?.querySelector('button')?.innerText;
 
-	const rows = [...table.querySelectorAll<HTMLTableRowElement>('tr.property-row')].map((row) => {
+	const properties = [...table.querySelectorAll<HTMLElement>('tr.property-row')].map((row) => {
 		const cells = row.innerText.split('\t'); // example: 'id\tstring\nnullable: true'
 		return new SwaggerProperty(
 			cells[0],
 			cells[1]?.split('\n')?.[0],
 			cells[1]?.includes('nullable: true')
-		).swift.declaration;
+		).swift;
 	});
 
-	return codeBlock(`public struct ${name ?? '<#StructName#>'}: Codable {`, ...rows, `}`);
+	return new SwiftStruct(name, properties);
+}
+
+class SwiftStruct {
+	constructor(public name: Optional<string>, public properties: SwiftProperty[]) {
+		this.name = name || '<#StuctName#>';
+	}
+
+	toString() {
+		return codeBlock(
+			`public struct ${this.name}: Codable {`,
+			...this.properties.flatMap((x) => x.declaration),
+			`}`
+		);
+	}
 }

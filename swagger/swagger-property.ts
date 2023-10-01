@@ -1,10 +1,13 @@
+import { Optional } from '@shared/optional';
 import { swiftType } from './swift-type';
 
 export class SwaggerProperty {
-	constructor(public name: string, public type: string, public nullable: boolean) {
+	name: string;
+	type: string;
+
+	constructor(name: Optional<string>, type: Optional<string>, public nullable: boolean) {
 		this.name = name || 'unknown';
 		this.type = type || 'unknown';
-		this.nullable = nullable;
 	}
 
 	get swift() {

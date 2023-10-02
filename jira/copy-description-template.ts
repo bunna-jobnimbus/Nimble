@@ -19,7 +19,7 @@ function makeTemplateButton(label: string, ...lines: string[]) {
 	});
 }
 
-const placeholder = '`placeholder`';
+const placeholder = '<placeholder>';
 
 const storyButton = makeTemplateButton(
 	'Story',

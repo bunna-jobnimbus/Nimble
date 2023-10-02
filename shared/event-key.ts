@@ -6,6 +6,6 @@ export type EventKey =
 	| 'jenkins.requireJiraTicket'
 	| 'jira.copyDescriptionTemplate'
 	| 'jira.copyJnid'
+	| 'swagger.generateCodable'
 	| 'swagger.generateRequestable'
-	| 'swagger.generateStruct'
 	| 'xray.generateXcodeTests';

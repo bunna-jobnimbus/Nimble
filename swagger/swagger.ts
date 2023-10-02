@@ -1,8 +1,8 @@
 import { onDocumentChange } from '@shared/on-document-change';
-import { generateStruct } from './generate-struct';
+import { generateCodable } from './generate-codable';
 import { generateRequestable } from './generate-requestable';
 
 onDocumentChange(() => {
+	generateCodable();
 	generateRequestable();
-	generateStruct();
 });

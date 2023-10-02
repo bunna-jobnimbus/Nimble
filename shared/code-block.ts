@@ -1,3 +1,5 @@
-export function codeBlock(...blocks: string[]) {
-	return blocks.join('\n');
+import { Optional } from './optional';
+
+export function codeBlock(...blocks: Optional<string>[]) {
+	return blocks.filter((x) => x != null).join('\n');
 }

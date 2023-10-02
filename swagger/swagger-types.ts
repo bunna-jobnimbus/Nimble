@@ -37,7 +37,7 @@ export class SwaggerSchema {
 	properties: SwaggerSchemaProperty[];
 
 	constructor(table: HTMLTableElement) {
-		this.name = table.closest('span.model')?.querySelector('button')?.innerText;
+		this.name = table.closest('span.model')?.querySelector<HTMLElement>('.model-title__text')?.innerText;
 		this.properties = [...table.querySelectorAll<HTMLTableRowElement>('tr.property-row')].map((row) => {
 			const cells = row.innerText.split('\t'); // example: 'id\tstring\nnullable: true'
 			return new SwaggerSchemaProperty(
@@ -49,6 +49,6 @@ export class SwaggerSchema {
 	}
 }
 
-class SwaggerSchemaProperty {
+export class SwaggerSchemaProperty {
 	constructor(public name: string, public type: string, public nullable: boolean) {}
 }

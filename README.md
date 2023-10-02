@@ -7,6 +7,5 @@ todo: jira - ticket warnings (needs to be pointed, missing design, incomplete de
 todo: jira - zen mode
 todo: make everything configurable
 todo: swagger - add post data to initializer
-todo: swagger - convert schema to grdb table
 todo: automatically remove unused imports
 todo: tidy up css selectors

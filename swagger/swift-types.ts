@@ -3,12 +3,12 @@ import { SwaggerEndpoint, SwaggerSchema } from './swagger-types';
 import { codeBlock } from '@shared/code-block';
 import { pascalCase } from '@shared/pascal-case';
 
-export const swaggerToSwiftTypeMap: Record<string, Optional<string>> = {
-	string: 'String',
-	boolean: 'Bool',
+const swaggerToSwiftTypeMap: Record<string, Optional<string>> = {
 	'integer($int32)': 'Int',
 	'number($double)': 'Double',
 	'string($date-time)': 'Date',
+	boolean: 'Bool',
+	string: 'String',
 };
 
 function convertSwaggerToSwiftType(type: string) {

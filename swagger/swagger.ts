@@ -1,8 +1,8 @@
 import { onDocumentChange } from '@shared/on-document-change';
-import { generateCodable } from './generate-codable';
+import { transformSchema } from './transform-schema';
 import { generateRequestable } from './generate-requestable';
 
 onDocumentChange(() => {
-	generateCodable();
+	transformSchema();
 	generateRequestable();
 });

@@ -3,13 +3,12 @@ import { recordEvent } from './record-event';
 import { Optional } from './optional';
 
 export function recordClick(
-	element: Optional<HTMLElement>,
+	element: HTMLElement,
 	eventKey: EventKey,
 	action: Optional<(event: MouseEvent) => void> = null
 ) {
-	element?.addEventListener('click', async (event) => {
+	element.addEventListener('click', async (event) => {
 		action?.(event);
-		event.stopPropagation();
 		recordEvent(eventKey);
 	});
 }

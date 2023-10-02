@@ -5,6 +5,7 @@ export function makeButton(
 	title?: string
 ) {
 	const button = document.createElement('button');
+	button.type = 'button';
 	button.innerText = label;
 
 	if (className) {

@@ -40,7 +40,7 @@ export class GRDBTable {
 		return codeBlock(
 			`try database.recreate(table: "${this.name}") { table in`,
 			...this.columns.map((column) => column.declaration),
-			`\ttable.primaryKey(["${this.primaryKey}"], onConflict: .replace)`,
+			`\ttable.primaryKey([ "${this.primaryKey}" ], onConflict: .replace)`,
 			`}`
 		);
 	}

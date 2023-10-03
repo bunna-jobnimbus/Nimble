@@ -2,7 +2,7 @@
 	"manifest_version": 3,
 	"name": "Nimble",
 	"description": "A chrome extension containing various improvements for common web developer tools.",
-	"version": "0.1.2",
+	"version": "0.1.3",
 	"content_scripts": [
 		{
 			"matches": ["https://jobnimbus.atlassian.net/jira/*", "https://jobnimbus.atlassian.net/browse/*"],

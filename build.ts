@@ -22,6 +22,9 @@ await Bun.build({
 print('copying manifest.json');
 execSync('cp ./manifest.json ./dist/manifest.json');
 
+print('copying icon');
+execSync('cp ./snail.png ./dist/snail.png');
+
 print('copying styles');
 execSync('cp ./**/*.css ./dist/');
 

@@ -5,7 +5,7 @@
 	"icons": {
 		"128": "snail.png"
 	},
-	"version": "0.1.4",
+	"version": "0.1.5",
 	"content_scripts": [
 		{
 			"matches": ["https://jobnimbus.atlassian.net/jira/*", "https://jobnimbus.atlassian.net/browse/*"],

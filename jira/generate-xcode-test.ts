@@ -5,12 +5,16 @@ import { makeButton } from '@shared/make-button';
 import { recordEvent } from '@shared/record-event';
 
 export function generateXcodeTest() {
-	const testingNotes = getUnmodifiedElement('[data-testid*="common.customfield_10501.label"]');
-	if (!testingNotes) return;
-	const jnid = document.querySelector('a[data-testid*="current-issue"]')?.textContent;
+	const linkedIssuesLabel = getUnmodifiedElement('[for="issue-link-search"]');
+	if (!linkedIssuesLabel) return;
+	const jnid = Array.from(
+		document.querySelectorAll(
+			'[data-testid="issue.issue-view.views.common.issue-line-card.issue-line-card-view.key"]'
+		)
+	).pop()?.textContent;
 	if (!jnid) return;
 
-	testingNotes.after(
+	linkedIssuesLabel.after(
 		makeButton('XCTest', 'nimble-button margin-left', (_, button) => {
 			copyToClipboard(button, getXcodeTest(jnid));
 			recordEvent('jira.generateXcodeTest');

@@ -20,17 +20,19 @@ You can do a ton with Chrome extensions (i.e. Ad blockers, Grammarly, React DevT
 
 -   Github Extensions
 
-    -   Always ignore whitespace
-
     -   Color-code pull request statuses
 
-    -   Add Jira link
+    -   Always ignore whitespace
+
+    -   Codegen test case
 
 -   Inherently brittle
 
     -   Content scripts that largely rely on element `id`s and `class` names can break when a website changes the way they name things.
 
     -   Sounds scary, but in practice, it rarely happens for enterprise-level applications.
+
+-   Building/Unpacking Extension (if time permits)
 
 # Resources
 
